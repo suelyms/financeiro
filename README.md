@@ -1,5 +1,6 @@
 # financeiro
 DICIONÁRIO
+
 id 
 
 num_ano- numero do ano
