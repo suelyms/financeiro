@@ -5,8 +5,12 @@ Dados de Execução Financeira
 
 
 
-DICIONÁRIO
-            id - código de identificação 
+
+
+#DICIONÁRIO#
+
+
+id - código de identificação 
 
 num_ano- numero do ano
 
@@ -50,29 +54,29 @@ cod_item_modalidade - codigo item modalidade
 
 dsc_item_modalidade - descrição item modalidade
 
-cod_programa
+cod_programa - código programa
 
-dsc_programa
+dsc_programa - descrição programa
 
-cod_subfuncao
+cod_subfuncao - codigo subfunção
 
-dsc_subfuncao
+dsc_subfuncao -  descrição subfunção
 
-num_sic
+num_sic - numero do SIC
 
-cod_np
+cod_np - codigo 
 
-vlr_empenho
+vlr_empenho - valor do empenho
 
-vlr_liquidado
+vlr_liquidado - valor liquidado
 
-valor_pago
+valor_pago - valor pago
 
-vlr_resto_pagar
+vlr_resto_pagar - valor restante a pagar
 
-dth_empenho
+dth_empenho -
 
-dth_pagamento
+dth_pagamento -  
 
 dth_liquidacao
 
