@@ -4,8 +4,7 @@ Fontes de Dados:
 Dados de Execução Financeira
 
 DICIONÁRIO
-
-id - código de identificação
+ id | código de identificação |
 
 num_ano- numero do ano
 
