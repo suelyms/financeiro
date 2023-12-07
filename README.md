@@ -64,7 +64,7 @@ dsc_subfuncao -  descrição subfunção
 
 num_sic - numero do SIC
 
-cod_np - codigo 
+cod_np - codigo np
 
 vlr_empenho - valor do empenho
 
@@ -74,12 +74,12 @@ valor_pago - valor pago
 
 vlr_resto_pagar - valor restante a pagar
 
-dth_empenho -
+dth_empenho - Data empenho
 
-dth_pagamento -  
+dth_pagamento -  Data pagamento
 
-dth_liquidacao
+dth_liquidacao - Data liquidação
 
-dth_processamento
+dth_processamento - Data processamento
 
-num_ano_np
+num_ano_np- Numero do ano np
