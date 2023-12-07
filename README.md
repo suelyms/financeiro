@@ -1,41 +1,41 @@
 # financeiro
 DICIONÁRIO
 
-id 
+id - código de identificação
 
 num_ano- numero do ano
 
 cod_ne - codigo numero empenho
 
-codigo_orgao- codigo orgao
+codigo_orgao - codigo orgao
 
 dsc_orgao-
 
-cod_credor- 
+cod_credor- código credor
 
-dsc_nome_credor,
+dsc_nome_credor- 
 
-cod_fonte,
+cod_fonte- código da fnte
 
-dsc_fonte, 
+dsc_fonte- 
 
-cod_funcao,
+cod_funcao- código função
 
-dsc_funcao, 
+dsc_funcao- 
 
-cod_item, 
+cod_item- código item
 
-dsc_item,
+dsc_item- 
 
-cod_item_elemento,
+cod_item_elemento- código ítem elemento
 
-dsc_item_elemento,
+dsc_item_elemento- 
 
-cod_item_categoria
+cod_item_categoria - código  ítem categoria
 
-dsc_item_categoria
+dsc_item_categoria -
 
-cod_item_grupo
+cod_item_grupo - 
 
 dsc_item_grupo
 
