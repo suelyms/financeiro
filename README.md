@@ -1,3 +1,9 @@
+## TRABALHO DESAFIO FINAL
+
+1º PASSO: RESTAURAR OS DADOS ENVIADO PELO PROF. -Importação do dump/backup para um banco de dados Relacional (SQL);
+
+2º PASSO: FOMULAR O DICIONÁRIO - Fazer a Modelagem Lógica do banco de dados importado acima;
+
 # financeiro
 
 Fontes de Dados:
@@ -13,7 +19,7 @@ chave única é num_ano, cod_ne,
 codigo_orgao.
 
 
-id - código de identificação 
+ id - código de identificação (PRIMARY KEY)
 
 num_ano- numero do ano ( chave única)
 
@@ -21,55 +27,55 @@ cod_ne - codigo numero empenho(chave única)
 
 codigo_orgao - codigo orgao ( chave única)
 
- dsc_orgao- descrição do orgão
+ dsc_orgao- descrição do orgão (VARCHAR)
 
- cod_credor- código credor
+ cod_credor- código credor (INT)
 
-dsc_nome_credor- descrição do nome do credor
+dsc_nome_credor- descrição do nome do credor (VARCHAR)
 
- cod_fonte- código da fonte
+ cod_fonte- código da fonte (INT)
 
- dsc_fonte- descriçaõ de fonte
+ dsc_fonte- descriçaõ de fonte (VARCHAR)
 
- cod_funcao- código função
+ cod_funcao- código função(INT)
 
-dsc_funcao- descrição da função
+dsc_funcao- descrição da função (VARCHAR)
 
-cod_item- código item
+cod_item- código item (INT)
 
-dsc_item- descrição do item
+dsc_item- descrição do item (VARCHAR)
 
-cod_item_elemento- código ítem elemento
+cod_item_elemento- código ítem elemento (INT)
 
-dsc_item_elemento- descrição do item elemento
+dsc_item_elemento- descrição do item elemento (VARCHAR)
 
-cod_item_categoria - código  ítem categoria
+cod_item_categoria - código  ítem categoria (INT)
 
-dsc_item_categoria -descrição do item categoria
+dsc_item_categoria -descrição do item categoria(VARCHAR)
 
-cod_item_grupo - código do ittem grupo
+cod_item_grupo - código do ittem grupo(INT)
 
-dsc_item_grupo - descrição item grupo
+dsc_item_grupo - descrição item grupo (VARCHAR)
 
-dsc_modalidade_licitacao - descrição modalidade licitação
+dsc_modalidade_licitacao - descrição modalidade licitação (VARCHAR)
 
-cod_item_modalidade - codigo item modalidade
+cod_item_modalidade - codigo item modalidade (INT)
 
-dsc_item_modalidade - descrição item modalidade
+dsc_item_modalidade - descrição item modalidade (VARCHAR)
 
-cod_programa - código programa
+cod_programa - código programa (INT)
 
-dsc_programa - descrição programa
+dsc_programa - descrição programa(VARCHAR)
 
-cod_subfuncao - codigo subfunção
+cod_subfuncao - codigo subfunção (INT)
 
-dsc_subfuncao -  descrição subfunção
+dsc_subfuncao -  descrição subfunção (VARCHAR)
 
-num_sic - numero do SIC
+num_sic - numero do SIC (INT)
 
-cod_np - codigo np
+cod_np - codigo np(INT)
 
-vlr_empenho - valor do empenho
+vlr_empenho - valor do empenho 
 
 vlr_liquidado - valor liquidado
 
@@ -77,15 +83,15 @@ valor_pago - valor pago
 
 vlr_resto_pagar - valor restante a pagar
 
-dth_empenho - Data empenho
+dth_empenho - Data empenho (DATE)
 
-dth_pagamento -  Data pagamento
+dth_pagamento -  Data pagamento (DATE)
 
-dth_liquidacao - Data liquidação
+dth_liquidacao - Data liquidação (DATE)
 
-dth_processamento - Data processamento
+dth_processamento - Data processamento (DATE)
 
-num_ano_np- Numero do ano np
+num_ano_np- Numero do ano np (
 
 
 TABELA FINANCEIRA
