@@ -1,8 +1,7 @@
 ## TRABALHO DESAFIO FINAL
 
-1º PASSO: RESTAURAR OS DADOS ENVIADO PELO PROF. -Importação do dump/backup para um banco de dados Relacional (SQL);
+## 1º PASSO: RESTAURAR OS DADOS ENVIADO PELO PROF. -Importação do dump/backup para um banco de dados Relacional (SQL);
 
-2º PASSO: FOMULAR O DICIONÁRIO - Fazer a Modelagem Lógica do banco de dados importado acima;
 
 # financeiro
 
@@ -19,9 +18,10 @@ chave única é num_ano, cod_ne,
 codigo_orgao.
 
 
+    
  id - código de identificação (PRIMARY KEY)
 
-num_ano- numero do ano ( chave única)
+ num_ano   -numero do ano ( chave única)
 
 cod_ne - codigo numero empenho(chave única)
 
@@ -75,13 +75,13 @@ num_sic - numero do SIC (INT)
 
 cod_np - codigo np(INT)
 
-vlr_empenho - valor do empenho 
+vlr_empenho - valor do empenho (NUMERIC)
 
-vlr_liquidado - valor liquidado
+vlr_liquidado - valor liquidado (NUMERIC)
 
-valor_pago - valor pago
+valor_pago - valor pago(NUMERIC)
 
-vlr_resto_pagar - valor restante a pagar
+vlr_resto_pagar - valor restante a pagar (NUMERIC)
 
 dth_empenho - Data empenho (DATE)
 
@@ -91,8 +91,11 @@ dth_liquidacao - Data liquidação (DATE)
 
 dth_processamento - Data processamento (DATE)
 
-num_ano_np- Numero do ano np (
+num_ano_np- Numero do ano np ( default)
 
+
+
+##  2º PASSO: FOMULAR O DICIONÁRIO - Fazer a Modelagem Lógica do banco de dados importado acima;
 
 TABELA FINANCEIRA
 
