@@ -3,15 +3,16 @@
 ## 1º PASSO: RESTAURAR OS DADOS ENVIADO PELO PROF. -Importação do dump/backup para um banco de dados Relacional (SQL);
 
 
-# financeiro
-
-Fontes de Dados:
+# financeiro -  Fontes de Dados:
 Dados de Execução Financeira
 
+## VERIFICANDO AS  LINHAS DUPLICADAS:
+
+SELECT  num_ano, cod_ne, codigo_orgao, count(*) from execucao_financeira_despesa 
+group by  num_ano, cod_ne, codigo_orgao having count(*)>1
 
 
-
-
+##  2º PASSO: FOMULAR O DICIONÁRIO 
 #DICIONÁRIO#
 
 chave única é num_ano, cod_ne,
@@ -94,8 +95,9 @@ dth_processamento - Data processamento (DATE)
 num_ano_np- Numero do ano np ( default)
 
 
+## 3º PASSO: Fazer a Modelagem Lógica do banco de dados importado acima;
 
-##  2º PASSO: FOMULAR O DICIONÁRIO - Fazer a Modelagem Lógica do banco de dados importado acima;
+
 
 TABELA FINANCEIRA
 
