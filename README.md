@@ -100,6 +100,20 @@ group by  num_ano, cod_ne, codigo_orgao having count(*)>1
 ## 3º PASSO: Fazer a Modelagem Conceitual do banco de dados importado acima;
 
 
+![image](https://github.com/suelyms/financeiro/assets/142910077/8f97be8b-25e9-47b9-8f1b-ae03061a6e20)
+
+
+## 4º passo: MODELAGEM LÓGICA:
+
+![image](https://github.com/suelyms/financeiro/assets/142910077/4b685845-5d65-4e14-b681-b9e55aaf254d)
+
+
+
+## 5ºPASSO: MODELAGEM DIMENSIONAL:
+
+![image](https://github.com/suelyms/financeiro/assets/142910077/5f6ff40c-ca43-4c0a-afb3-41fdf0e271c6)
+
+
 
 TABELA FINANCEIRA
 
