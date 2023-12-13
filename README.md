@@ -23,7 +23,7 @@ group by  num_ano, cod_ne, codigo_orgao having count(*)>1
 |---|---|
 |cod_ne |Codigo de identificação do numero do empenho - chave única-NOT NULL|NÃO|
 |---|---|
-|codigo_orgao | Codigo que identifica o orgao responsável - chave única|NÃO|
+|codigo_orgao | Codigo que identifica o orgao responsável - Character varying(NOT NULL)|NÃO|
 |---|---|
 |dsc_orgao | Nome do orgão responsável pela despesa- Character varying |NÃO|
 |---|---|
