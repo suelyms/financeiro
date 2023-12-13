@@ -13,86 +13,88 @@ group by  num_ano, cod_ne, codigo_orgao having count(*)>1
 
 
 ##  2º PASSO: FOMULAR O DICIONÁRIO 
-#DICIONÁRIO#
+# #DICIONÁRIO
 
-chave única é num_ano, cod_ne,
-codigo_orgao.
+| NOME VARIÁVEL | DESCRIÇÃO E TIPO DE VARIÁVEL|POSSUI VALORES NULOS|
+|---|---|---|
+| id | Identificador Serial do Registro - (PK)INTERGER|NÃO|
+|---|---|
+| num_ano   |Numero do ano do empenho  - chave única -NOT NULL|NÃO|
+|---|---|
+|cod_ne |Codigo numero empenho - chave única-NOT NULL|NÃO|
+|---|---|
+|codigo_orgao | Codigo que identifica o orgao responsável - chave única|NÃO|
+|---|---|
+|dsc_orgao | descrição do orgão - Character varying |NÃO|
+|---|---|
+|cod_credor| código credor -Character varying|NÃO|
+|---|--|
+| dsc_nome_credor | descrição do nome do credor -Character varying|NÃO|
+|---|---|
+| cod_fonte| código da fonte -Character varying|SIM|
+|---|---|
+|dsc_fonte| descriçaõ de fonte -Character varying|SIM|
+|---|---|
+| cod_funcao |código função-Character varying|NÃO|
+|---|---|
+|dsc_funcao| descrição da função -Character varying|NÃO
+|---|---|
+|cod_item| código item -Character varying|SIM|
+|---|---|
+|dsc_item |descrição do item -Character varying|SIM|
+|---|---|
+|cod_item_elemento| código ítem elemento -Character varying|SIM|
+|---|---|
+|dsc_item_elemento| descrição do item elemento -Character varying|SIM|
+|---|---|
+|cod_item_categoria | código  ítem categoria -Character varying|NÃO|
+|---|---|
+|dsc_item_categoria |descrição do item categoria-Character varying|NÃO|
+|---|---|
+|cod_item_grupo | código do ittem grupo-Character varying|SIM|
+|---|---|
+|dsc_item_grupo | descrição item grupo -Character varying|SIM|
+|---|---|
+|dsc_modalidade_licitacao | descrição modalidade licitação -Character varying|
+|---|---|
+|cod_item_modalidade |codigo item modalidade -Character varying|NÃO|
+|---|---|
+|dsc_item_modalidade | descrição item modalidade -Character varying|NÃO|
+|---|---|
+|cod_programa | código que identifica um programa específico relacionado a despesa- Character varying|NÃO|
+|---|---|
+|dsc_programa | descrição programa relacionado a despesa-Character varying|NÃO|
+|---|---|
+|cod_subfuncao | codigo subfunção -|Character varying|NÃO|
+|---|---|
+|dsc_subfuncao | descrição da subfunção em qual a despesa está relacionada -Character varying|NÃO|
+|---|---|
+|num_sic | numero do SIC -Numero de identificação do Sistema integrado de adm. financeira, utilizado para controle e registro das informações|SIM|
+|---|---|
+|cod_np | codigodo numero do processo -Character varying|NÃO|
+|---|---|
+|vlr_empenho | valor reservado para pagamento da despesa -NUMERIC(18,2)|NÃO|
+|---|---|
+|vlr_liquidado | valor utilizado para pagamento da despesa -NUMERIC(18,2)|NÃO|
+|---|---|
+|valor_pago | valor desembolsado para pagar a despesa-NUMERIC(18,2)SIM|
+|---|---|
+|vlr_resto_pagar | valor que ainda precisa ser pago para pagar a despesa -NUMERIC(18,2)|NÃO|
+|---|---|
+|dth_empenho | Data e hora do empenho, indicando quando foi realizado  -DATE|
+|---|---|
+|dth_pagamento |  Data e hora do pagamento indicando quandoocorreu o desembolso -DATE|SIM|
+|---|---|
+|dth_liquidacao | Data e hora da liquidação, indicando quando ocorreu  -DATE|SIM|
+|---|---|
+|dth_processamento | Data e hora do processamento, indicando quando foi atualizados -DATE|NÃO|
+|---|---|
+|num_ano_np | Numero do ano associado aonúmero do Processo - Character varying|SIM|
 
 
-    
- id - código de identificação (PRIMARY KEY)
 
- num_ano   -numero do ano ( chave única)
 
-cod_ne - codigo numero empenho(chave única)
 
-codigo_orgao - codigo orgao ( chave única)
-
- dsc_orgao- descrição do orgão (VARCHAR)
-
- cod_credor- código credor (INT)
-
-dsc_nome_credor- descrição do nome do credor (VARCHAR)
-
- cod_fonte- código da fonte (INT)
-
- dsc_fonte- descriçaõ de fonte (VARCHAR)
-
- cod_funcao- código função(INT)
-
-dsc_funcao- descrição da função (VARCHAR)
-
-cod_item- código item (INT)
-
-dsc_item- descrição do item (VARCHAR)
-
-cod_item_elemento- código ítem elemento (INT)
-
-dsc_item_elemento- descrição do item elemento (VARCHAR)
-
-cod_item_categoria - código  ítem categoria (INT)
-
-dsc_item_categoria -descrição do item categoria(VARCHAR)
-
-cod_item_grupo - código do ittem grupo(INT)
-
-dsc_item_grupo - descrição item grupo (VARCHAR)
-
-dsc_modalidade_licitacao - descrição modalidade licitação (VARCHAR)
-
-cod_item_modalidade - codigo item modalidade (INT)
-
-dsc_item_modalidade - descrição item modalidade (VARCHAR)
-
-cod_programa - código programa (INT)
-
-dsc_programa - descrição programa(VARCHAR)
-
-cod_subfuncao - codigo subfunção (INT)
-
-dsc_subfuncao -  descrição subfunção (VARCHAR)
-
-num_sic - numero do SIC (INT)
-
-cod_np - codigo np(INT)
-
-vlr_empenho - valor do empenho (NUMERIC)
-
-vlr_liquidado - valor liquidado (NUMERIC)
-
-valor_pago - valor pago(NUMERIC)
-
-vlr_resto_pagar - valor restante a pagar (NUMERIC)
-
-dth_empenho - Data empenho (DATE)
-
-dth_pagamento -  Data pagamento (DATE)
-
-dth_liquidacao - Data liquidação (DATE)
-
-dth_processamento - Data processamento (DATE)
-
-num_ano_np- Numero do ano np ( default)
 
 
 ## 3º PASSO: Fazer a Modelagem Lógica do banco de dados importado acima;
