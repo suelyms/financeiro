@@ -21,31 +21,31 @@ group by  num_ano, cod_ne, codigo_orgao having count(*)>1
 |---|---|
 | num_ano   |Numero do ano do empenho  - chave única -NOT NULL|NÃO|
 |---|---|
-|cod_ne |Codigo numero empenho - chave única-NOT NULL|NÃO|
+|cod_ne |Codigo de identificação do numero do empenho - chave única-NOT NULL|NÃO|
 |---|---|
 |codigo_orgao | Codigo que identifica o orgao responsável - chave única|NÃO|
 |---|---|
-|dsc_orgao | descrição do orgão - Character varying |NÃO|
+|dsc_orgao | Nome do orgão responsável pela despesa- Character varying |NÃO|
 |---|---|
-|cod_credor| código credor -Character varying|NÃO|
+|cod_credor| código que identifica o credor -Character varying|NÃO|
 |---|--|
-| dsc_nome_credor | descrição do nome do credor -Character varying|NÃO|
+| dsc_nome_credor | Nome do credor que tem direito ao recebimento -Character varying|NÃO|
 |---|---|
-| cod_fonte| código da fonte -Character varying|SIM|
+| cod_fonte| código da fonte dos recursos-Character varying|SIM|
 |---|---|
-|dsc_fonte| descriçaõ de fonte -Character varying|SIM|
+|dsc_fonte| descriçaõ de fonte dos recursos utilizados para realizar os pagamentos-Character varying|SIM|
 |---|---|
-| cod_funcao |código função-Character varying|NÃO|
+| cod_funcao |código que identifica a função a qual está relacionada a despesa-Character varying|NÃO|
 |---|---|
-|dsc_funcao| descrição da função -Character varying|NÃO
+|dsc_funcao| Função a qual a despesaestá relacionada -Character varying|NÃO
 |---|---|
-|cod_item| código item -Character varying|SIM|
+|cod_item| código do item especifico relacionado a despesa -Character varying|SIM|
 |---|---|
-|dsc_item |descrição do item -Character varying|SIM|
+|dsc_item |descrição do item relacionado a despesa -Character varying|SIM|
 |---|---|
-|cod_item_elemento| código ítem elemento -Character varying|SIM|
+|cod_item_elemento| código ítem que identifica o elemento de despesa -Character varying|SIM|
 |---|---|
-|dsc_item_elemento| descrição do item elemento -Character varying|SIM|
+|dsc_item_elemento| descrição do item elemento que indentifica a natureza do gasto -Character varying|SIM|
 |---|---|
 |cod_item_categoria | código  ítem categoria -Character varying|NÃO|
 |---|---|
