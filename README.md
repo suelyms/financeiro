@@ -97,7 +97,7 @@ group by  num_ano, cod_ne, codigo_orgao having count(*)>1
 
 
 
-## 3º PASSO: Fazer a Modelagem Lógica do banco de dados importado acima;
+## 3º PASSO: Fazer a Modelagem Conceitual do banco de dados importado acima;
 
 
 
