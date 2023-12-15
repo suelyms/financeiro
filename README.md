@@ -115,70 +115,101 @@ group by  num_ano, cod_ne, codigo_orgao having count(*)>1
 
 
 
-TABELA FINANCEIRA
+## Totais Gerais de Valor Original (Empenho)
+## Totais Gerais Pago
+## Totais Gerais a pagar
+
+---MEDIDAS ACIMA POR:
+
+- Período (ano, bimestre e mês);
+ 
+- Órgão;
+  
+- Item: Item Elemento, Item Categoria, Item Grupo;
+  
+- Período (ano, semestre e mês);
+  
+- Modalidade: item modalidade, modalidade licitação;
 
 
-CREATE TABLE  public.execucao_financeira_despesa
-(
-    id integer NOT NULL DEFAULT nextval('execucao_financeira_despesa_id_seq'::regclass),
-    
-    num_ano character varying COLLATE pg_catalog."default" NOT NULL,
-    
-    cod_ne character varying COLLATE pg_catalog."default" NOT NULL,
-    
-    codigo_orgao character varying COLLATE pg_catalog."default" NOT NULL,
-    
-    dsc_orgao character varying COLLATE pg_catalog."default",
-    
-    cod_credor character varying COLLATE pg_catalog."default",
-    
-    dsc_nome_credor character varying COLLATE pg_catalog."default",
-    
-    cod_fonte character varying COLLATE pg_catalog."default",
-    
-    dsc_fonte character varying COLLATE pg_catalog."default",
-    
-    cod_funcao character varying COLLATE pg_catalog."default",
-    
-    dsc_funcao character varying COLLATE pg_catalog."default",
-    
-    cod_item character varying COLLATE pg_catalog."default",
-    
-    dsc_item character varying COLLATE pg_catalog."default",
-    
-    cod_item_elemento character varying COLLATE pg_catalog."default",
-    
-    dsc_item_elemento character varying COLLATE pg_catalog."default",
-    
-    cod_item_categoria character varying COLLATE pg_catalog."default",
-    
-    dsc_item_categoria character varying COLLATE pg_catalog."default",
-    
-    cod_item_grupo character varying COLLATE pg_catalog."default",
-    
-    dsc_item_grupo character varying COLLATE pg_catalog."default",
-    
-    dsc_modalidade_licitacao character varying COLLATE pg_catalog."default",
-    
-    cod_item_modalidade character varying COLLATE pg_catalog."default",
-    
-    dsc_item_modalidade character varying COLLATE pg_catalog."default",
-    
-    cod_programa character varying COLLATE pg_catalog."default",
-    
-    dsc_programa character varying COLLATE pg_catalog."default",
-    
-    cod_subfuncao character varying COLLATE pg_catalog."default",
-    
-    dsc_subfuncao character varying COLLATE pg_catalog."default",
-    
-    num_sic character varying COLLATE pg_catalog."default",
-    
-    cod_np character varying COLLATE pg_catalog."default" DEFAULT 0,
-    
-    vlr_empenho numeric(18,2),
-    
-    vlr_liquidado numeric(18,2),
+
+
+### CRIANDO ODS.
+
+CREATE TABLE ods.execucao_financeira_despesa as
+SELECT *FROM execucao_financeira_despesa;
+
+
+
+## ANÁLISE EXPLORATÓRIA DA TABELA
+
+ANALISANDO A TABELA, VERIFICAMOS NULOS, DUPLICIDADE, VALORES..
+
+VERIFICANDO TOTAL GERAL DE NULOS:
+
+SELECT COUNT(*) AS quantidade_nulos
+FROM execucao_financeira_despesa
+WHERE codigo_orgao IS NULL 
+or dsc_orgao is NULL
+or cod_item is NULL 
+or dsc_item is NULL 
+or cod_item_categoria is NULL 
+or dsc_item_categoria is NULL
+or cod_item_grupo is NULL
+or dsc_item_grupo is NULL
+or dsc_modalidade_licitacao is NULL
+or cod_item_modalidade is NULL
+or dsc_item_modalidade is NULL
+
+TOTAL GERAL DE NULOS: 1437212
+
+codigo_orgao: 0
+dsc_orgao:116
+cod_item: 287982
+dsc_item: 287982
+cod_item_categoria: 0
+dsc_item_categoria: 0
+cod_item_grupo: 1134605
+dsc_item_grupo: 1134605
+dsc_modalidade_licitacao:401656
+cod_item_modalidade: 0
+dsc_item_modalidade:0
+
+
+Duplicidade da DSC ORGAO:
+SELECT dsc_orgao,COUNT(id) AS quantidade_duplicados
+FROM execucao_financeira_despesa
+GROUP BY dsc_orgao
+HAVING COUNT(*) > 1;
+
+
+SELECT dsc_orgao,COUNT(id) AS quantidade_duplicados
+FROM execucao_financeira_despesa
+GROUP BY dsc_orgao
+HAVING COUNT(*) > 1;
+
+
+
+
+**TOTAL GERAL EMPENHO**: Foi feito um SELECT SUN:
+
+SELECT SUM(valor_empenho) AS valor_total_empenho
+FROM data_warehouse.fato_empenho;
+-----Valor total dos EMPENHOS:
+
+**TOTAIS GERAIS VALOR PAGO**
+
+
+
+
+
+
+
+
+
+
+
+   
     
     valor_pago numeric(18,2),
     
