@@ -114,6 +114,8 @@ group by  num_ano, cod_ne, codigo_orgao having count(*)>1
 ![image](https://github.com/suelyms/financeiro/assets/142910077/5f6ff40c-ca43-4c0a-afb3-41fdf0e271c6)
 
 
+## 6º PASSO: CRIANDO A TABELA SQL
+
 
 - Totais Gerais de Valor Original (Empenho)
 - Totais Gerais Pago
@@ -178,25 +180,11 @@ dsc_item_modalidade:0
 
 **VERIFICAR DUPLICIDADE EM CADA CAMPO:
 
+Em relação ao Identificador Serial de Registro, não existe duplicidade.
 
+## AO CRIAR A CHAVE UNICA, JÁ EXCLUÍMOS AS DUPLICATAS, PARA EVITAR FUTURAS DUPLICAÇÕES:
 
-
-SELECT codigo_orgao,COUNT(id) AS quantidade_duplicados
-FROM execucao_financeira_despesa
-GROUP BY codigo_orgao
-HAVING COUNT(*) > 1;
-
-
-SELECT dsc_orgao,COUNT(id) AS quantidade_duplicados
-FROM execucao_financeira_despesa
-GROUP BY dsc_orgao
-HAVING COUNT(*) > 1;
-
-SELECT cod_item,COUNT(id) AS quantidade_duplicados
-FROM execucao_financeira_despesa
-GROUP BY cod_item
-HAVING COUNT(*) > 1;
-
+![image](https://github.com/suelyms/financeiro/assets/142910077/6ba2f190-8977-47cc-ba62-f7f1b05dd6ca)
 
 
 
@@ -205,164 +193,76 @@ HAVING COUNT(*) > 1;
 
 **TOTAL GERAL EMPENHO**: Foi feito um SELECT SUN:
 
-SELECT SUM(valor_empenho) AS valor_total_empenho
-FROM data_warehouse.fato_empenho;
+![image](https://github.com/suelyms/financeiro/assets/142910077/8fd0d2d1-2b1b-46fb-a25e-90889415558e)
+
 -----Valor total dos Empenho:
+
+
 
 **TOTAIS GERAIS VALOR PAGO**
 
-SELECT SUM(valor_pago) AS valor_total_pago
-FROM data_warehouse.fato_empenho;
+![image](https://github.com/suelyms/financeiro/assets/142910077/3e3fc7ff-b694-4d98-bad8-a3308487773c)
+
+
 
 **TOTAIS GERAIS A PAGAR**
 
-SELECT SUM(valor_resto_a_pagar) AS valor_resto_a_pagar
-FROM data_warehouse.fato_empenho; 
+![image](https://github.com/suelyms/financeiro/assets/142910077/364c65ae-c433-4f99-9114-db30498dacbb)
+
+
 
 ### Análise por Orgão:** Total Empenho, Total Pago e Total A Pagar
 
 **Total por ano
-SELECT
-    ano_cadastro,
-    codigo_orgao,
-    SUM(valor_empenho) AS soma_valor_empenho,
-    SUM(valor_pago) AS soma_valor_pago,
-    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
-FROM
-    data_warehouse.fato_empenho
-GROUP BY
-    ano_cadastro,
-    codigo_orgao;
+
+![image](https://github.com/suelyms/financeiro/assets/142910077/f39db6aa-0884-42de-ac77-534f401b8ef1)
+
+
 
    **Total por bimestre
-SELECT
-    ano_cadastro,
-    codigo_orgao,
-    FLOOR((EXTRACT(MONTH FROM dth_empenho) - 1) / 2) + 1 AS bimestre,
-    SUM(valor_empenho) AS soma_valor_empenho,
-    SUM(valor_pago) AS soma_valor_pago,
-    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
-FROM
-    data_warehouse.fato_empenho
-GROUP BY
-    ano_cadastro,
-    codigo_orgao,
-    bimestre;
+
+   ![image](https://github.com/suelyms/financeiro/assets/142910077/e391d3f9-fc88-47d0-8419-656062168ebb)
+
 
 
     **Total por mês
-SELECT
-    ano_cadastro,
-    codigo_orgao,
-    EXTRACT(MONTH FROM dth_empenho) AS mes,
-    SUM(valor_empenho) AS soma_valor_empenho,
-    SUM(valor_pago) AS soma_valor_pago,
-    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
-FROM
-    data_warehouse.fato_empenho
-GROUP BY
-    ano_cadastro,
-    codigo_orgao,
-    mes;
+    
+ ![image](https://github.com/suelyms/financeiro/assets/142910077/53205367-e559-41dd-8f4e-161641795130)
+
 
 
  ## Análise por item_elemento:**  Total Empenho, Total Pago e Total A Pagar
 
 
 **Total por ano
-SELECT
-    ano_cadastro,
-    codigo_item_elemento,
-    SUM(valor_empenho) AS soma_valor_empenho,
-    SUM(valor_pago) AS soma_valor_pago,
-    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
-FROM
-    data_warehouse.fato_empenho
-GROUP BY
-    ano_cadastro,
-    codigo_item_elemento;
-;
+![image](https://github.com/suelyms/financeiro/assets/142910077/9f167e3b-b6ce-4554-b829-b7c77b59b9b6)
 
 
 ** Total por bimestre
 
+![image](https://github.com/suelyms/financeiro/assets/142910077/8d71ad18-99a4-4587-bf87-3f5e5a35ee5b)
 
-SELECT
-    ano_cadastro,
-    codigo_item_elemento,
-    FLOOR((EXTRACT(MONTH FROM data_empenho) - 1) / 2) + 1 AS bimestre,
-    SUM(valor_empenho) AS soma_valor_empenho,
-    SUM(valor_pago) AS soma_valor_pago,
-    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
-FROM
-    data_warehouse.fato_empenho
-GROUP BY
-    ano_cadastro,
-    codigo_item_elemento,
-    bimestre;
 
 ** Total por mes
-SELECT
-    ano_cadastro,
-    codigo_item_elemento,
-    EXTRACT(MONTH FROM data_empenho) AS mes,
-    SUM(valor_empenho) AS soma_valor_empenho,
-    SUM(valor_pago) AS soma_valor_pago,
-    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
-FROM
-    data_warehouse.fato_empenho
-GROUP BY
-    ano_cadastro,
-    codigo_item_elemento,
-    mes;
+![image](https://github.com/suelyms/financeiro/assets/142910077/1f328d63-e670-4b66-9a11-47ddca060bf0)
+
 
  ## Análise por Item Categoria:** Total Empenho, Total Pago e Total A Pagar
 
    
     **Total por ano
-SELECT
-    ano_cadastro,
-    codigo_item_categoria,
-    SUM(valor_empenho) AS soma_valor_empenho,
-    SUM(valor_pago) AS soma_valor_pago,
-    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
-FROM
-    data_warehouse.fato_empenho
-GROUP BY
-    ano_cadastro,
-    codigo_item_categoria;
+![image](https://github.com/suelyms/financeiro/assets/142910077/400d08ed-a41f-441f-89bb-149b75131ec5)
+
 
 
     **Total por bimestre
     
-SELECT
-    ano_cadastro,
-    codigo_item_categoria,
-    FLOOR((EXTRACT(MONTH FROM data_empenho) - 1) / 2) + 1 AS bimestre,
-    SUM(valor_empenho) AS soma_valor_empenho,
-    SUM(valor_pago) AS soma_valor_pago,
-    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
-FROM
-    data_warehouse.fato_empenho
-GROUP BY
-    ano_cadastro,
-    codigo_item_categoria,
-    bimestre;
+![image](https://github.com/suelyms/financeiro/assets/142910077/76d8b4d4-5222-49f5-9e26-2d208129d444)
+
 
     **Total por mes
-SELECT
-    ano_cadastro,
-    codigo_item_categoria,
-    EXTRACT(MONTH FROM data_empenho) AS mes,
-    SUM(valor_empenho) AS soma_valor_empenho,
-    SUM(valor_pago) AS soma_valor_pago,
-    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
-FROM
-    data_warehouse.fato_empenho
-GROUP BY
-    ano_cadastro,
-    codigo_item_categoria,
-    mes;
+![image](https://github.com/suelyms/financeiro/assets/142910077/303ff2cc-f304-49ff-a0f0-5c7eaf132b70)
+
     
     
    
