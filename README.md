@@ -115,9 +115,9 @@ group by  num_ano, cod_ne, codigo_orgao having count(*)>1
 
 
 
-## Totais Gerais de Valor Original (Empenho)
-## Totais Gerais Pago
-## Totais Gerais a pagar
+- Totais Gerais de Valor Original (Empenho)
+- Totais Gerais Pago
+- Totais Gerais a pagar
 
 ---MEDIDAS ACIMA POR:
 
@@ -147,39 +147,43 @@ ANALISANDO A TABELA, VERIFICAMOS NULOS, DUPLICIDADE, VALORES..
 
 VERIFICANDO TOTAL GERAL DE NULOS:
 
-SELECT COUNT(*) AS quantidade_nulos
-FROM execucao_financeira_despesa
-WHERE codigo_orgao IS NULL 
-or dsc_orgao is NULL
-or cod_item is NULL 
-or dsc_item is NULL 
-or cod_item_categoria is NULL 
-or dsc_item_categoria is NULL
-or cod_item_grupo is NULL
-or dsc_item_grupo is NULL
-or dsc_modalidade_licitacao is NULL
-or cod_item_modalidade is NULL
-or dsc_item_modalidade is NULL
+![image](https://github.com/suelyms/financeiro/assets/142910077/80ab05d3-a46f-45cc-b693-09ed2ca38f83)
+
+
 
 TOTAL GERAL DE NULOS: 1437212
 
-codigo_orgao: 0
+id:codigo_orgao: 0
+
 dsc_orgao:116
+
 cod_item: 287982
+
 dsc_item: 287982
+
 cod_item_categoria: 0
+
 dsc_item_categoria: 0
+
 cod_item_grupo: 1134605
+
 dsc_item_grupo: 1134605
+
 dsc_modalidade_licitacao:401656
+
 cod_item_modalidade: 0
+
 dsc_item_modalidade:0
 
 
-Duplicidade da DSC ORGAO:
-SELECT dsc_orgao,COUNT(id) AS quantidade_duplicados
+**VERIFICAR DUPLICIDADE EM CADA CAMPO:
+
+
+
+
+SELECT codigo_orgao,COUNT(id) AS quantidade_duplicados
 FROM execucao_financeira_despesa
-GROUP BY dsc_orgao
+GROUP BY codigo_orgao
 HAVING COUNT(*) > 1;
 
 
@@ -187,6 +191,14 @@ SELECT dsc_orgao,COUNT(id) AS quantidade_duplicados
 FROM execucao_financeira_despesa
 GROUP BY dsc_orgao
 HAVING COUNT(*) > 1;
+
+SELECT cod_item,COUNT(id) AS quantidade_duplicados
+FROM execucao_financeira_despesa
+GROUP BY cod_item
+HAVING COUNT(*) > 1;
+
+
+
 
 
 
@@ -195,39 +207,163 @@ HAVING COUNT(*) > 1;
 
 SELECT SUM(valor_empenho) AS valor_total_empenho
 FROM data_warehouse.fato_empenho;
------Valor total dos EMPENHOS:
+-----Valor total dos Empenho:
 
 **TOTAIS GERAIS VALOR PAGO**
 
+SELECT SUM(valor_pago) AS valor_total_pago
+FROM data_warehouse.fato_empenho;
+
+**TOTAIS GERAIS A PAGAR**
+
+SELECT SUM(valor_resto_a_pagar) AS valor_resto_a_pagar
+FROM data_warehouse.fato_empenho; 
+
+### Análise por Orgão:** Total Empenho, Total Pago e Total A Pagar
+
+**Total por ano
+SELECT
+    ano_cadastro,
+    codigo_orgao,
+    SUM(valor_empenho) AS soma_valor_empenho,
+    SUM(valor_pago) AS soma_valor_pago,
+    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
+FROM
+    data_warehouse.fato_empenho
+GROUP BY
+    ano_cadastro,
+    codigo_orgao;
+
+   **Total por bimestre
+SELECT
+    ano_cadastro,
+    codigo_orgao,
+    FLOOR((EXTRACT(MONTH FROM dth_empenho) - 1) / 2) + 1 AS bimestre,
+    SUM(valor_empenho) AS soma_valor_empenho,
+    SUM(valor_pago) AS soma_valor_pago,
+    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
+FROM
+    data_warehouse.fato_empenho
+GROUP BY
+    ano_cadastro,
+    codigo_orgao,
+    bimestre;
 
 
+    **Total por mês
+SELECT
+    ano_cadastro,
+    codigo_orgao,
+    EXTRACT(MONTH FROM dth_empenho) AS mes,
+    SUM(valor_empenho) AS soma_valor_empenho,
+    SUM(valor_pago) AS soma_valor_pago,
+    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
+FROM
+    data_warehouse.fato_empenho
+GROUP BY
+    ano_cadastro,
+    codigo_orgao,
+    mes;
 
 
+ ## Análise por item_elemento:**  Total Empenho, Total Pago e Total A Pagar
 
 
+**Total por ano
+SELECT
+    ano_cadastro,
+    codigo_item_elemento,
+    SUM(valor_empenho) AS soma_valor_empenho,
+    SUM(valor_pago) AS soma_valor_pago,
+    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
+FROM
+    data_warehouse.fato_empenho
+GROUP BY
+    ano_cadastro,
+    codigo_item_elemento;
+;
 
 
+** Total por bimestre
 
+
+SELECT
+    ano_cadastro,
+    codigo_item_elemento,
+    FLOOR((EXTRACT(MONTH FROM data_empenho) - 1) / 2) + 1 AS bimestre,
+    SUM(valor_empenho) AS soma_valor_empenho,
+    SUM(valor_pago) AS soma_valor_pago,
+    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
+FROM
+    data_warehouse.fato_empenho
+GROUP BY
+    ano_cadastro,
+    codigo_item_elemento,
+    bimestre;
+
+** Total por mes
+SELECT
+    ano_cadastro,
+    codigo_item_elemento,
+    EXTRACT(MONTH FROM data_empenho) AS mes,
+    SUM(valor_empenho) AS soma_valor_empenho,
+    SUM(valor_pago) AS soma_valor_pago,
+    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
+FROM
+    data_warehouse.fato_empenho
+GROUP BY
+    ano_cadastro,
+    codigo_item_elemento,
+    mes;
+
+ ## Análise por Item Categoria:** Total Empenho, Total Pago e Total A Pagar
 
    
-    
-    valor_pago numeric(18,2),
-    
-    vlr_resto_pagar numeric(18,2),
-    
-    dth_empenho date,
-    
-    dth_pagamento date,
-    
-    dth_liquidacao date,
-    
-    dth_processamento date,
-    
-    num_ano_np character varying COLLATE pg_catalog."default",
-    
-    CONSTRAINT execucao_financeira_despesa_pkey PRIMARY KEY (id)
-    
-);
+    **Total por ano
+SELECT
+    ano_cadastro,
+    codigo_item_categoria,
+    SUM(valor_empenho) AS soma_valor_empenho,
+    SUM(valor_pago) AS soma_valor_pago,
+    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
+FROM
+    data_warehouse.fato_empenho
+GROUP BY
+    ano_cadastro,
+    codigo_item_categoria;
 
 
+    **Total por bimestre
+    
+SELECT
+    ano_cadastro,
+    codigo_item_categoria,
+    FLOOR((EXTRACT(MONTH FROM data_empenho) - 1) / 2) + 1 AS bimestre,
+    SUM(valor_empenho) AS soma_valor_empenho,
+    SUM(valor_pago) AS soma_valor_pago,
+    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
+FROM
+    data_warehouse.fato_empenho
+GROUP BY
+    ano_cadastro,
+    codigo_item_categoria,
+    bimestre;
+
+    **Total por mes
+SELECT
+    ano_cadastro,
+    codigo_item_categoria,
+    EXTRACT(MONTH FROM data_empenho) AS mes,
+    SUM(valor_empenho) AS soma_valor_empenho,
+    SUM(valor_pago) AS soma_valor_pago,
+    SUM(valor_resto_a_pagar) AS soma_valor_a_pagar
+FROM
+    data_warehouse.fato_empenho
+GROUP BY
+    ano_cadastro,
+    codigo_item_categoria,
+    mes;
+    
+    
+   
 
