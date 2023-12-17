@@ -136,7 +136,7 @@ group by  num_ano, cod_ne, codigo_orgao having count(*)>1
 
 
 
-### CRIANDO ODS.
+- CRIANDO ODS.
 
 CREATE TABLE ods.execucao_financeira_despesa as
 SELECT *FROM execucao_financeira_despesa;
@@ -144,13 +144,22 @@ SELECT *FROM execucao_financeira_despesa;
 
 
 
-## ANÁLISE EXPLORATÓRIA DA TABELA
+## 7º PASSO: ANÁLISE EXPLORATÓRIA DA TABELA
+
+- Durante a análise detalhada da tabela de despesas, identifiquei uma série de irregularidades nos dados,
+incluindo a presença de campos vazios, valores nulos e a existência de valores negativos que não condizem 
+com o total esperado. Essas observações levantam preocupações significativas sobre a integridade dos dados registrados.
 
 
 
 FOI EXTRAÍDOS DADOS DE UMA EXECUCAO FINANCEIRA,  REFERENTES A PAGAMENTOS DE EMPENHOS
 
-ONDE A CHAVE ÚNICA É num_ano, cod_ne, codigo_orgao.
+SENDO A CHAVE ÚNICA:  num_ano, cod_ne, codigo_orgao.
+
+* Independente de os dados terem sido coletados eles precisam ser interpretados para atingir os objetivos propostos
+da pesquisa. O passo inicial para isso é realizar a Análise Exploratória de Dados para resumir e
+organizar os dados, de maneira que seja possível identificar padrões e elaborar as primeiras conclusões a respeito
+e assim descrever a sua variabilidade.
 
 
 ## OBJETIVOS: Aferição de medidas: 
@@ -164,10 +173,75 @@ ONDE A CHAVE ÚNICA É num_ano, cod_ne, codigo_orgao.
   Órgão;
   Modalidade: item modalidade, modalidade licitação
 
+  OBS> DE INICIO SÓ SERÁ POSSIVEL A ANALISE POR ANO.
+
+
+  - PRIMEIRAMENTE EXECUTEI UM COMANDO PARA EXIBIR AS 5 PRIMEIRAS LINHAS PARA TER UMA VISÃO INICIAL:
+
+  ![image](https://github.com/suelyms/financeiro/assets/142910077/8ecbf451-d0ee-44e9-bfee-ecddf7b1dfbb)
+
+  Durante a análise inicial da tabela de despesas, observei a presença de campos vazios em diversas colunas,
+   indicando a falta de informações cruciais para o entendimento e a interpretação adequada dos registros.
+  Os campos afetados incluem os campos: dsc_item_grupo, cod_item_grupo, num_sic, vlr_liquidado, vlr_resto_pagar e dth_liquidacao
 
 
 
 
+- VERIFIQUEI CAMPOS NUMÉRICOS, como média, mínimo, máximo de empenho:
+
+![image](https://github.com/suelyms/financeiro/assets/142910077/d25ae5c6-cedb-4f6b-99d4-54160454beb8)
+
+
+
+![image](https://github.com/suelyms/financeiro/assets/142910077/283791b9-cbe3-4352-824e-c9796b06f075)
+
+
+ - Observei uma situação peculiar que requer atenção especial: o valor mínimo dos empenhos está negativo.
+   Essa descoberta levanta considerações importantes sobre a integridade e a consistência dos dados registrados.
+
+
+
+
+
+
+NESSA TABELA INICIAL VERIFIQUEI  O VALOR TOTAL DE EMPENHO 
+
+![image](https://github.com/suelyms/financeiro/assets/142910077/63924cbb-e04c-48ff-a63e-9db60f38a961)
+
+DANDO UM VALOR TOTAL DE EMPENHO: 1337468033892.24
+
+* Valor Total do Empenho Excessivamente Elevado
+
+Durante a análise minuciosa da tabela de despesas, chama a atenção a presença de um valor total de empenho que se destaca por sua extrema elevação. Essa observação levanta considerações importantes sobre a integridade dos dados e pode indicar possíveis problemas ou eventos extraordinários. Abaixo estão algumas observações preliminares sobre essa constatação:
+
+Valor Total Anormalmente Alto:
+
+O valor total do empenho na tabela de despesas é significativamente superior às expectativas normais, indicando a presença de um montante excessivamente elevado.
+
+1. Possíveis Causas:
+A origem desse valor pode ser atribuída a diferentes fatores, como erros na entrada de dados, registros duplicados, falhas nos processos de integração, ou mesmo a ocorrência de eventos incomuns que resultaram em despesas extraordinárias.
+
+3. Impacto na Análise Financeira:
+A existência desse valor excessivo pode distorcer a análise financeira, comprometendo a interpretação precisa dos gastos e influenciando decisões estratégicas baseadas nessas informações.
+
+4.Validação e Verificação:
+É imperativo realizar uma validação minuciosa dos registros associados a esse valor total elevado. Isso pode envolver a verificação da fonte dos dados, revisão de processos de entrada e a confirmação da precisão das transações relacionadas.
+
+5.Correções Necessárias:
+Se identificado como um erro, será necessário corrigir os registros afetados, ajustando os valores para refletir a realidade das despesas. Se for resultado de eventos extraordinários, é crucial documentar e explicar esses eventos para garantir a transparência na análise.
+
+
+
+VERIFICANDO  POR ORGÃO VIMOS QUE TIVEMOS PAGAMENTO PARA ORGÃOS EM QUE A DESCRIÇÃO ESTÁ NULA
+![image](https://github.com/suelyms/financeiro/assets/142910077/edf65bdc-d47f-4e18-b01a-4cec41a26c74)
+![image](https://github.com/suelyms/financeiro/assets/142910077/23eaa78a-b705-4bdb-9af0-5a4eade59ea3)
+![image](https://github.com/suelyms/financeiro/assets/142910077/3e68d85f-c74b-44f7-b55e-13b10a5ee8d1)
+
+
+- Ao realizar uma análise exploratória na tabela de despesas, observei uma particularidade que merece atenção:
+a presença de campos vazios na descrição do órgão (campo dsc_orgao). 
+A descrição do órgão é uma informação crucial para entender o contexto e a natureza das despesas registradas, 
+e a ausência desses dados pode impactar a qualidade da análise e interpretação dos resultados.
 
 
 
@@ -179,7 +253,6 @@ ANALISANDO A TABELA, VERIFICAMOS NULOS, DUPLICIDADE, VALORES..
 VERIFICANDO TOTAL GERAL DE NULOS:
 
 ![image](https://github.com/suelyms/financeiro/assets/142910077/80ab05d3-a46f-45cc-b693-09ed2ca38f83)
-
 
 
 TOTAL GERAL DE NULOS: 1437212
@@ -207,10 +280,6 @@ cod_item_modalidade: 0
 dsc_item_modalidade:0
 
 
-**VERIFICAR DUPLICIDADE EM CADA CAMPO:
-
-Em relação ao Identificador Serial de Registro, não existe duplicidade.
-
 ## AO CRIAR A CHAVE UNICA, JÁ EXCLUÍMOS AS DUPLICATAS, PARA EVITAR FUTURAS DUPLICAÇÕES:
 
 ![image](https://github.com/suelyms/financeiro/assets/142910077/6ba2f190-8977-47cc-ba62-f7f1b05dd6ca)
@@ -218,25 +287,22 @@ Em relação ao Identificador Serial de Registro, não existe duplicidade.
 
 
 
-
-
-**TOTAL GERAL EMPENHO**: Foi feito um SELECT SUN:
-
-![image](https://github.com/suelyms/financeiro/assets/142910077/8fd0d2d1-2b1b-46fb-a25e-90889415558e)
-
------Valor total dos Empenho:
-
-
-
 **TOTAIS GERAIS VALOR PAGO**
 
-![image](https://github.com/suelyms/financeiro/assets/142910077/3e3fc7ff-b694-4d98-bad8-a3308487773c)
+![image](https://github.com/suelyms/financeiro/assets/142910077/f8840995-d7ef-4020-9643-8ce5d07f2e07)
+
+![image](https://github.com/suelyms/financeiro/assets/142910077/7bd09623-21ea-48e6-838a-28386a8eed38)
+
 
 
 
 **TOTAIS GERAIS A PAGAR**
 
-![image](https://github.com/suelyms/financeiro/assets/142910077/364c65ae-c433-4f99-9114-db30498dacbb)
+![image](https://github.com/suelyms/financeiro/assets/142910077/e45adc15-2fd4-4d8f-905a-43aca347e521)
+
+![image](https://github.com/suelyms/financeiro/assets/142910077/5c46f86a-89bb-449c-8002-8ea82bf29341)
+
+
 
 
 
@@ -244,54 +310,37 @@ Em relação ao Identificador Serial de Registro, não existe duplicidade.
 
 **Total por ano
 
-![image](https://github.com/suelyms/financeiro/assets/142910077/f39db6aa-0884-42de-ac77-534f401b8ef1)
+![image](https://github.com/suelyms/financeiro/assets/142910077/94aca699-5c50-496f-a710-082e19a68068)
+
+![image](https://github.com/suelyms/financeiro/assets/142910077/9f21f0d3-3e0d-4b1c-91f6-c733c33c85f5)
+
+Em alguns registros, o campo "Valor Total a Pagar" está vazio, mesmo quando os valores de empenho e pagamento estão preenchidos.
+A ausência do valor total a pagar pode ser resultado de erros na entrada de dados, problemas de integração entre sistemas, ou mesmo a falta de atualização dos registros.
 
 
-
-   **Total por bimestre
-
-   ![image](https://github.com/suelyms/financeiro/assets/142910077/e391d3f9-fc88-47d0-8419-656062168ebb)
-
-
-
-    **Total por mês
-    
- ![image](https://github.com/suelyms/financeiro/assets/142910077/53205367-e559-41dd-8f4e-161641795130)
-
-
+ 
 
  ## Análise por item_elemento:**  Total Empenho, Total Pago e Total A Pagar
 
-
 **Total por ano
-![image](https://github.com/suelyms/financeiro/assets/142910077/9f167e3b-b6ce-4554-b829-b7c77b59b9b6)
+![image](https://github.com/suelyms/financeiro/assets/142910077/079fe34b-73c7-4c7a-929e-d6fea0037dcd)
+Em alguns registros, o campo "Valor Total a Pagar" está vazio, mesmo quando os valores de empenho e pagamento estão preenchidos.
+A ausência do valor total a pagar pode ser resultado de erros na entrada de dados, problemas de integração entre sistemas, ou mesmo a falta de atualização dos registros.
 
-
-** Total por bimestre
-
-![image](https://github.com/suelyms/financeiro/assets/142910077/8d71ad18-99a4-4587-bf87-3f5e5a35ee5b)
-
-
-** Total por mes
-![image](https://github.com/suelyms/financeiro/assets/142910077/1f328d63-e670-4b66-9a11-47ddca060bf0)
 
 
  ## Análise por Item Categoria:** Total Empenho, Total Pago e Total A Pagar
-
    
     **Total por ano
-![image](https://github.com/suelyms/financeiro/assets/142910077/400d08ed-a41f-441f-89bb-149b75131ec5)
+    ![image](https://github.com/suelyms/financeiro/assets/142910077/4f04ef44-ca8d-42cc-afed-a8160f33bb7d)
+
+Em alguns registros, o campo "Valor Total a Pagar" está vazio, mesmo quando os valores de empenho e pagamento estão preenchidos.
+A ausência do valor total a pagar pode ser resultado de erros na entrada de dados, problemas de integração entre sistemas, ou mesmo a falta de atualização dos registros.
 
 
 
-    **Total por bimestre
-    
-![image](https://github.com/suelyms/financeiro/assets/142910077/76d8b4d4-5222-49f5-9e26-2d208129d444)
 
-
-    **Total por mes
-![image](https://github.com/suelyms/financeiro/assets/142910077/303ff2cc-f304-49ff-a0f0-5c7eaf132b70)
-
+  
     
     
    
