@@ -6,7 +6,7 @@
 # financeiro -  Fontes de Dados:
 Dados de Execução Financeira
 
-## VERIFICANDO E ANALISANDO A TABELA
+## VERIFICANDO
 
 SELECT  num_ano, cod_ne, codigo_orgao, count(*) from execucao_financeira_despesa 
 group by  num_ano, cod_ne, codigo_orgao having count(*)>1
