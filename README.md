@@ -143,7 +143,36 @@ SELECT *FROM execucao_financeira_despesa;
 
 
 
+
 ## ANÁLISE EXPLORATÓRIA DA TABELA
+
+
+
+FOI EXTRAÍDOS DADOS DE UMA EXECUCAO FINANCEIRA,  REFERENTES A PAGAMENTOS DE EMPENHOS
+
+ONDE A CHAVE ÚNICA É num_ano, cod_ne, codigo_orgao.
+
+
+## OBJETIVOS: Aferição de medidas: 
+
+
+- Período (ano, bimestre e mês);
+  Órgão;
+  Item: Item Elemento, Item Categoria, Item Grupo;
+
+- Período (ano, semestre e mês);
+  Órgão;
+  Modalidade: item modalidade, modalidade licitação
+
+
+
+
+
+
+
+
+
+
 
 ANALISANDO A TABELA, VERIFICAMOS NULOS, DUPLICIDADE, VALORES..
 
