@@ -332,8 +332,9 @@ A ausência do valor total a pagar pode ser resultado de erros na entrada de dad
  ## Análise por Item Categoria:** Total Empenho, Total Pago e Total A Pagar
    
     **Total por ano
+    
     ![image](https://github.com/suelyms/financeiro/assets/142910077/4f04ef44-ca8d-42cc-afed-a8160f33bb7d)
-
+    
 Em alguns registros, o campo "Valor Total a Pagar" está vazio, mesmo quando os valores de empenho e pagamento estão preenchidos.
 A ausência do valor total a pagar pode ser resultado de erros na entrada de dados, problemas de integração entre sistemas, ou mesmo a falta de atualização dos registros.
 
